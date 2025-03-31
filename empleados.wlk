@@ -97,7 +97,19 @@ object galvan{
     }
 
     method cobrar(){
-        
+        if(deuda > 0){
+            deuda = deuda - sueldo;
+            self.saldarDeuda()
+        } else{
+            dinero = dinero + sueldo;
+        }
+    }
+
+    method saldarDeuda(){
+        if(deuda < 0){
+                dinero = dinero - deuda;
+                deuda = 0;
+            }
     }
 
     method gastar(cuanto){
@@ -110,14 +122,7 @@ object galvan{
     }
 
     method totalCobrado(){
-        if(deuda > 0){
-            deuda = deuda - sueldo;
-            if(deuda < 0){
-                dinero = dinero - deuda;
-                deuda = 0;
-            }
-        } else{
-            dinero = dinero + sueldo;
-        }
+        
     }
+
 }
